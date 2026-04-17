@@ -42,7 +42,7 @@ const Navbar = () => {
     <nav className="bg-white/80 backdrop-blur-md text-corporate-dark px-4 md:px-8 sticky top-0 z-50 border-b border-gray-100/50 shadow-sm transition-all h-20">
       <div className="flex justify-between items-center h-full">
         <Link to="/" className="flex items-center">
-          <img src="/logo.png" alt="AdvisorX Logo" className="h-7 md:h-8 object-contain filter invert opacity-90 hover:opacity-100 transition-opacity" />
+          <img src="/Advisorx new logo.png" alt="AdvisorX Logo" className="h-7 md:h-8 object-contain opacity-90 hover:opacity-100 transition-opacity" />
         </Link>
         
         <div className="hidden md:flex items-center gap-10 text-sm font-bold tracking-widest uppercase h-full">
