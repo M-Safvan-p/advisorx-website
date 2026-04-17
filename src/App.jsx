@@ -32,11 +32,19 @@ const NavDropdown = ({ title, path, description }) => (
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showComingSoon, setShowComingSoon] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     setIsOpen(false);
+    setShowComingSoon(false);
   }, [location]);
+
+  const handleApplyClick = (e) => {
+    e.preventDefault();
+    setShowComingSoon(true);
+    setTimeout(() => setShowComingSoon(false), 3000);
+  };
 
   return (
     <nav className="bg-white/80 backdrop-blur-md text-corporate-dark px-4 md:px-8 sticky top-0 z-50 border-b border-gray-100/50 shadow-sm transition-all h-20">
@@ -65,9 +73,12 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center h-full">
-          <a href="mailto:startups@advisorxgrowth.com" className="bg-advisor-blue text-white px-7 py-3 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-advisor-accent shadow-lg shadow-blue-500/30 hover:-translate-y-0.5 hover:shadow-blue-500/50 transition-all duration-300">
-            Apply
-          </a>
+          <button 
+            onClick={handleApplyClick}
+            className={`px-7 py-3 rounded-full font-bold text-xs uppercase tracking-widest transition-all duration-300 ${showComingSoon ? 'bg-gray-100 text-gray-500 border border-gray-200 shadow-none cursor-not-allowed' : 'bg-advisor-blue text-white shadow-lg shadow-blue-500/30 hover:bg-advisor-accent hover:-translate-y-0.5 hover:shadow-blue-500/50'}`}
+          >
+            {showComingSoon ? 'Coming Soon' : 'Apply'}
+          </button>
         </div>
         
         <div className="md:hidden flex items-center">
@@ -83,9 +94,12 @@ const Navbar = () => {
           <Link to="/incubation" className="text-gray-800 font-bold uppercase tracking-widest text-sm tracking-wide">Incubation</Link>
           <Link to="/investors" className="text-gray-800 font-bold uppercase tracking-widest text-sm tracking-wide">Investors</Link>
           <Link to="/community" className="text-gray-800 font-bold uppercase tracking-widest text-sm tracking-wide">Community</Link>
-          <a href="mailto:startups@advisorxgrowth.com" className="bg-advisor-blue text-center text-white mt-4 px-6 py-4 rounded-xl font-bold text-xs uppercase tracking-widest shadow-md inline-block">
-            Apply Now
-          </a>
+          <button 
+            onClick={handleApplyClick}
+            className={`text-center mt-4 px-6 py-4 rounded-xl font-bold text-xs uppercase tracking-widest inline-block transition-all duration-300 ${showComingSoon ? 'bg-gray-100 text-gray-500 border border-gray-200 shadow-none cursor-not-allowed' : 'bg-advisor-blue text-white shadow-md'}`}
+          >
+            {showComingSoon ? 'Coming Soon' : 'Apply Now'}
+          </button>
         </div>
       )}
     </nav>
